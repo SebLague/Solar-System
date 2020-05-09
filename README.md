@@ -1,6 +1,6 @@
 # Solar System
 
-Little test of portals in Unity.
+Little solar system experiment.
 Note: you'll need to have Blender installed to view some of the models.
 
 [Watch video](https://www.youtube.com/watch?v=7axImc1sxa0)
