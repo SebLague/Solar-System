@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf43e303dd354502bcaddeec557e12a, type: 3}
+  m_Name: BinaryB
+  m_EditorClassIdentifier: 
+  shape: {fileID: 11400000, guid: 713d0fa534bcc463784106ce5c0cc783, type: 2}
+  shading: {fileID: 11400000, guid: 35329587ea5ea455fb9f7536067d4f52, type: 2}

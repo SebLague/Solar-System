@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0467bf655a1214b878d6510a0b2bb09f, type: 3}
+  m_Name: Ocean 1
+  m_EditorClassIdentifier: 
+  depthMultiplier: 15
+  alphaMultiplier: 70
+  colA: {r: 0, g: 0.5, b: 0.43362522, a: 1}
+  colB: {r: 0, g: 0.8329468, b: 1, a: 1}
+  waveNormalA: {fileID: 2800000, guid: 22ce6bfd05a7041529cf1bc4de37ed57, type: 3}
+  waveNormalB: {fileID: 2800000, guid: 2735e2726ca46411398278a9fa8a26d4, type: 3}
+  waveStrength: 0.759
+  waveScale: 20
+  waveSpeed: 0.5
+  smoothness: 0.882
+  testParams: {x: 0, y: 7.19, z: 0.7, w: 9.4}

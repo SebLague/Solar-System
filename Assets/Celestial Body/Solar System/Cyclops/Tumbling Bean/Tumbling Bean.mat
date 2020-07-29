@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Tumbling Bean
+  m_Shader: {fileID: 4800000, guid: ebd63f199114146ddacca96d32c18d9e, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CraterRay:
+        m_Texture: {fileID: 2800000, guid: 1dd8d495747f9486b9b0f3a63b0ce851, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMap:
+        m_Texture: {fileID: 2800000, guid: 65c07d8223a8f4c0ab716441f5c8c0a1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2c0981800f96945c8838dc6057c25d4b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: fb5f32830e2c84487ababc395fd75b0e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMapFlat:
+        m_Texture: {fileID: 2800000, guid: ffe9afa33c72745dead53ac360847ec2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMapSteep:
+        m_Texture: {fileID: 2800000, guid: fb5f32830e2c84487ababc395fd75b0e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tex2:
+        m_Texture: {fileID: 2800000, guid: 8bd6d87e9d43d47ac953370e4b627578, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tex3:
+        m_Texture: {fileID: 2800000, guid: 56494c7daf00a41ecb4992bfa29b18be, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BiomeBlendStrength: 10.48
+    - _BiomeDistortStrength: 0.33
+    - _BiomeWarpStrength: 15.77
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _EjectaBrightness: 0.2
+    - _FresnelPow: 10
+    - _FresnelStrength: 6
+    - _FresnelStrengthFar: 3
+    - _FresnelStrengthNear: 0.5
+    - _GlossMapScale: 1
+    - _Glossiness: 0.6
+    - _GlossyReflections: 1
+    - _MainTexScale: 4
+    - _Metallic: 0.002900413
+    - _MetallicA: 0.642
+    - _MetallicB: 0
+    - _Mode: 0
+    - _NormalMapFlatScale: 20
+    - _NormalMapScale: 5
+    - _NormalMapSteepScale: 20
+    - _NormalMapStrength: 0.632
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _PolesStartLongitude: 0.8486198
+    - _PolesVisibility: 1
+    - _SmoothnessA: 0.248
+    - _SmoothnessB: 0.417
+    - _SmoothnessEjecta: 0
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _TexNoiseScale: 0.44
+    - _TextureMinBrightness: 1
+    - _UVSec: 0
+    - _UseEjecta: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color2: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+    - _Color3: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
+    - _Color4: {r: 1, g: 1, b: 1, a: 1}
+    - _EjectaCol: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FresnelCol: {r: 0, g: 0.51349497, b: 1, a: 1}
+    - _NormalMapScales: {r: 10, g: 10, b: 0, a: 0}
+    - _Params: {r: 0.23, g: -1.27, b: 0.26, a: 0.52}
+    - _PrimaryColA: {r: 0.15864186, g: 0.18783918, b: 0.21698111, a: 0}
+    - _PrimaryColB: {r: 0.039215688, g: 0.40392157, b: 0.3080389, a: 1}
+    - _RandomBiomeValues: {r: 0.85, g: -0.48, b: 2, a: -7.82}
+    - _RandomPoleValues: {r: -0.14810935, g: -0.00710578, b: 0.08569491, a: 2.2706196}
+    - _RandomValues: {r: -1, g: 0.19, b: 0.4, a: -0.28}
+    - _SecondaryColA: {r: 0.38274297, g: 0.4439998, b: 0.5754717, a: 0}
+    - _SecondaryColB: {r: 0.43867922, g: 1, b: 0.9953623, a: 0}
+    - _TestParams: {r: 0, g: 1.15, b: 1.5, a: 13.36}
+    - _TextureMask: {r: 0, g: 0, b: 1, a: 0}
+    - _TextureWeights: {r: 0, g: 0, b: 0, a: 1}

@@ -16,12 +16,18 @@ public class GameUI : MonoBehaviour {
     }
 
     public static void DisplayInteractionInfo (string info) {
-        Instance.interactionInfo.text = info;
-        Instance.interactionInfoDisplayTimeRemaining = 3;
+        if (Instance) {
+            Instance.interactionInfo.text = info;
+            Instance.interactionInfoDisplayTimeRemaining = 3;
+        } else {
+            Debug.Log ($"{info} (no UI instance found)");
+        }
     }
 
     public static void CancelInteractionDisplay () {
-        Instance.interactionInfoDisplayTimeRemaining = 0;
+        if (Instance) {
+            Instance.interactionInfoDisplayTimeRemaining = 0;
+        }
     }
 
     static GameUI Instance {

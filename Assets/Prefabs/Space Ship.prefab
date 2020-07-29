@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 2872287603150659917}
   - component: {fileID: 7641874638711824422}
   m_Layer: 9
-  m_Name: Box (3)
+  m_Name: Hatch button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,8 +175,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.82921195, b: 0.2688679, a: 1}
-  m_Intensity: 3.38
-  m_Range: 8.56
+  m_Intensity: 1.5
+  m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -339,9 +339,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 199fd84693a104ee8aae3e965e835525, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -7801780710219777537, guid: b9b9963d959164bd5a0af23c16838ed2, type: 3}
 --- !u!1 &820172706647378447
 GameObject:
@@ -446,7 +446,8 @@ MonoBehaviour:
   groundedMask:
     serializedVersion: 2
     m_Bits: 1024
-  thrustStrength: 20
+  window: {fileID: 6461904384069412659}
+  thrustStrength: 22
   rotSpeed: 5
   rollSpeed: 30
   rotSmoothSpeed: 10
@@ -462,7 +463,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 10000
   m_Drag: 0
-  m_AngularDrag: 0.8
+  m_AngularDrag: 10
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -704,7 +705,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.9056604, g: 0.81709516, b: 0.38020647, a: 1}
+  m_Color: {r: 1, g: 0.9603281, b: 0.7688679, a: 1}
   m_Intensity: 4
   m_Range: 50
   m_SpotAngle: 43
@@ -795,9 +796,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 199fd84693a104ee8aae3e965e835525, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -7801780710219777537, guid: b9b9963d959164bd5a0af23c16838ed2, type: 3}
 --- !u!1 &820172707557202508
 GameObject:
@@ -884,9 +885,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 199fd84693a104ee8aae3e965e835525, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -7801780710219777537, guid: b9b9963d959164bd5a0af23c16838ed2, type: 3}
 --- !u!1 &820172707633323626
 GameObject:
@@ -1053,9 +1054,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 199fd84693a104ee8aae3e965e835525, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -7801780710219777537, guid: b9b9963d959164bd5a0af23c16838ed2, type: 3}
 --- !u!1 &820172707678019659
 GameObject:
@@ -1477,13 +1478,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5535439159918302354}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -6.16, z: 5.04}
+  m_LocalRotation: {x: -0.121395454, y: -0, z: -0, w: 0.99260426}
+  m_LocalPosition: {x: 0.05, y: -6.236, z: 5.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 820172707633323627}
   m_RootOrder: 21
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -13.945001, y: 0, z: 0}
 --- !u!65 &1821986899991329745
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1495,8 +1496,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.241848, y: 1.5875276, z: 1.8852834}
-  m_Center: {x: -0.02327919, y: -0.21147239, z: -0.17900151}
+  m_Size: {x: 1.241848, y: 0.36656648, z: 1.8852834}
+  m_Center: {x: -0.023279129, y: 0.39900854, z: -0.17900157}
 --- !u!1 &8518185278958193062
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,6 +2056,12 @@ PrefabInstance:
 --- !u!4 &5628200416132007474 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: b9b9963d959164bd5a0af23c16838ed2,
+    type: 3}
+  m_PrefabInstance: {fileID: 820172705836346664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6461904384069412659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3257055291888924133, guid: b9b9963d959164bd5a0af23c16838ed2,
     type: 3}
   m_PrefabInstance: {fileID: 820172705836346664}
   m_PrefabAsset: {fileID: 0}

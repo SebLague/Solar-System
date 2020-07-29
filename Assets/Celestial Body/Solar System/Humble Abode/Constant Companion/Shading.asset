@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc781a665a4a49f09ef89610d5413ee, type: 3}
+  m_Name: Shading
+  m_EditorClassIdentifier: 
+  randomize: 0
+  seed: 0
+  terrainMaterial: {fileID: 2100000, guid: 97c6fd1a351c24e73aa0a7d0074c064a, type: 2}
+  hasAtmosphere: 0
+  atmosphereSettings: {fileID: 0}
+  hasOcean: 0
+  oceanLevel: 0
+  oceanSettings: {fileID: 11400000, guid: 2dda04ece1bc5461c9c060d959433048, type: 2}
+  shadingDataCompute: {fileID: 7200000, guid: 8f6c3d86008df43ca88b9d64cf8e0514, type: 3}
+  primaryColA: {r: 1, g: 1, b: 1, a: 0}
+  secondaryColA: {r: 0.735849, g: 0.735849, b: 0.735849, a: 0}
+  primaryColB: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
+  secondaryColB: {r: 0, g: 0, b: 0, a: 0}
+  steepCol: {r: 0.057654828, g: 0.046858326, b: 0.084905684, a: 1}
+  numBiomePoints: 72
+  radiusMinMax: {x: 0.001, y: 0.03}
+  biomeWarpNoise:
+    numLayers: 4
+    lacunarity: 2
+    persistence: 0.5
+    scale: 2.12
+    elevation: 0.79
+    verticalShift: 0
+    offset: {x: 0, y: 0, z: 0}
+  detailNoise:
+    numLayers: 4
+    lacunarity: 2.34
+    persistence: 0.54
+    scale: -0.1
+    elevation: 1.43
+    verticalShift: 0
+    offset: {x: 10.64, y: 0, z: 0}
+  detailWarpNoise:
+    numLayers: 4
+    lacunarity: 2
+    persistence: 0.5
+    scale: 0.11
+    elevation: 13.31
+    verticalShift: 0
+    offset: {x: 0, y: 0, z: 0}
+  candidatePoolSize: 0.225
+  desiredNumCraterRays: 9
+  ejectaRaySeed: 453
+  ejectaRaysScale: 11
+  normalMapsFlat:
+  - {fileID: 2800000, guid: 65c07d8223a8f4c0ab716441f5c8c0a1, type: 3}
+  normalMapsSteep:
+  - {fileID: 2800000, guid: 8a3e8acfd7e3b4a528160cc9ec108fd8, type: 3}
+  - {fileID: 2800000, guid: ffe9afa33c72745dead53ac360847ec2, type: 3}
+  - {fileID: 2800000, guid: fb5f32830e2c84487ababc395fd75b0e, type: 3}
+  - {fileID: 2800000, guid: c6335a766e3764fac8a632a38635cb2b, type: 3}

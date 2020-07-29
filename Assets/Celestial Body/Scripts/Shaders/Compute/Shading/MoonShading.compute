@@ -1,0 +1,87 @@
+﻿#pragma kernel CSMain
+
+#include "../../Includes/FractalNoise.cginc"
+#include "../../Includes/Math.cginc"
+//
+StructuredBuffer<float3> vertices;
+RWStructuredBuffer<float4> shadingData;
+uint numVertices;
+
+StructuredBuffer<float4> points;
+int numRandomPoints;
+
+float4 noiseParams_biomeWarp[3];
+float4 noiseParams_detailWarp[3];
+float4 noiseParams_detail[3];
+
+float4 params;
+
+StructuredBuffer<float4> ejectaCraters;
+int numEjectaCraters;
+
+float calcSphereNoise(float3 pos) {
+	float sphereNoise = 1.#INF;
+	for (int i = 0; i < numRandomPoints; i ++) {
+		float3 sphereCentre = points[i].xyz;
+		float sphereRadius = points[i].w;
+		float dst = length(pos - sphereCentre);
+		float t = dst / sphereRadius;
+		sphereNoise = min(sphereNoise, t);
+	}
+	return sphereNoise;
+}
+
+[numthreads(512,1,1)]
+void CSMain (uint id : SV_DispatchThreadID)
+{
+	if (id >= numVertices) { return; }
+
+	float3 pos = vertices[id];
+
+	float3 domainWarp = 0;
+	domainWarp.x = simpleNoise(pos, noiseParams_biomeWarp);
+	domainWarp.y = simpleNoise(pos + 100, noiseParams_biomeWarp);
+	domainWarp.z = simpleNoise(pos - 100, noiseParams_biomeWarp);
+
+	float3 detailWarp = 0;
+	detailWarp.x = simpleNoise(pos, noiseParams_detailWarp);
+	detailWarp.y = simpleNoise(pos + 100, noiseParams_detailWarp);
+	detailWarp.z = simpleNoise(pos - 100, noiseParams_detailWarp);
+
+	float domainWarp2 = simpleNoise(pos, noiseParams_detailWarp);
+
+	// Sphere noise
+	float3 warpedPos = pos + (domainWarp) * 0.1;
+	float sphereNoise = calcSphereNoise(warpedPos);
+
+	float detailNoise = simpleNoise(pos + domainWarp2 * 0.1, noiseParams_detail);
+
+	// Calculate uv coords for crater 'ejecta ray' texture to be projected onto the surface around select craters
+	float2 ejectaUV = 1;
+	float minDst = 999;
+	for (int craterIndex = 0; craterIndex < numEjectaCraters; craterIndex ++) {
+		float3 craterCentre = ejectaCraters[craterIndex].xyz;
+		float dst = length(craterCentre - pos);
+		float scaledDst = dst / ejectaCraters[craterIndex].w;
+
+		if (scaledDst < minDst) {
+			minDst = scaledDst;
+
+			float3 craterUp = craterCentre;
+			float3 craterForward = normalize(cross(craterUp, float3(0,1,0)));
+			float3 forward = normalize(cross(pos, craterUp));
+
+			float cross_x = forward.y * craterForward.z - forward.z * craterForward.y;
+			float cross_y = forward.z * craterForward.x - forward.x * craterForward.z;
+			float cross_z = forward.x * craterForward.y - forward.y * craterForward.x;
+			float angleSign = sign(craterUp.x * cross_x + craterUp.y * cross_y + craterUp.z * cross_z);
+
+			float angle = acos(dot(craterForward, forward)) * angleSign;
+			//float estBiomeVal = Blend(7 * 0.8, 0.8, calcSphereNoise(craterCentre));
+			//float biomeSign = (estBiomeVal < 0.5)?-1:1;
+			ejectaUV = float2 (angle, scaledDst);
+		}
+	}
+	
+	shadingData[id] = float4(ejectaUV.xy, detailNoise, sphereNoise);
+}

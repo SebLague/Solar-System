@@ -1,0 +1,7 @@
+Craters: https://www.textures.com/download/pbr0280/133957
+Rock2: https://www.textures.com/download/pbr0234/133290
+Rock3: https://www.textures.com/download/pbr0156/133191
+Rock4: https://www.textures.com/download/pbr0160/133195
+Rock5: https://www.textures.com/download/pbr0482/138374
+Snow: https://www.textures.com/download/3dscans0087/128331?q=snow
+Waves: http://vodacek.zvb.cz/archiv/230.html

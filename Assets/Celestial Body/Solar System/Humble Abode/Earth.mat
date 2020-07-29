@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Earth
+  m_Shader: {fileID: 4800000, guid: fa2bee6d3f5064024b6434575359a23b, type: 3}
+  m_ShaderKeywords: _USESNOWYPOLES_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: f5c8f5ca9c4e64acd865c37e279ec79a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: f5c8f5ca9c4e64acd865c37e279ec79a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RockNormal:
+        m_Texture: {fileID: 2800000, guid: cd7ac5dd24f1e4a7a81e2d55fe7dcd64, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SnowNormal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SnowTex:
+        m_Texture: {fileID: 2800000, guid: 61560dd98bb354c1cb38f1dcd85723d4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BiomeBlend: 0
+    - _BlendNoiseScale: 0.05
+    - _BlendNoiseStrength: 0.1
+    - _BumpScale: 1
+    - _CliffThreshold: 0
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _FlatColBlend: 1.5
+    - _FlatColBlendNoise: 0.3
+    - _FlatRegionBlend: 0.321
+    - _FlatThreshold: 0.175
+    - _FlatToSteepBlend: 0.051
+    - _FlatToSteepNoise: 0.026
+    - _FresnelPow: 12
+    - _FresnelStrength: 2
+    - _FresnelStrengthFar: 0
+    - _FresnelStrengthNear: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _GrassHeightBlend: 0.138
+    - _GrassHeightMax: 0.182
+    - _HeightLow: 0.102
+    - _HeightMid: 0.309
+    - _MaxFlatHeight: 0.52
+    - _Metallic: 0
+    - _Mode: 0
+    - _NoiseScale: 5
+    - _NoiseScale2: 50
+    - _NormalMapStrength: 0.735
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _PoleBiomeBlend: 0.191
+    - _PoleBiomeNoiseStrength: 0
+    - _PoleBiomeNoiseStrength2: 0
+    - _PoleBiomeStart: 0.844
+    - _RockNormalMapStrength: 0
+    - _RockNormalScale: 21.16
+    - _ShoreBlend: 0.032
+    - _ShoreHeight: 0.061
+    - _SmoothnessTextureChannel: 0
+    - _SnowAltitude: 0.518
+    - _SnowAltitudeBlend: 0.336
+    - _SnowBlend: 0.092
+    - _SnowHighlight: 1.2
+    - _SnowLongitude: 0.906
+    - _SnowNoiseA: 3
+    - _SnowNoiseB: 2.87
+    - _SnowNormalMapStrength: 0.948
+    - _SnowNormalScale: 21.39
+    - _SnowNormalStrength: 0
+    - _SnowSpecular: 0.704
+    - _SnowTextureScale: 2.5
+    - _SpeckleStrength: 1
+    - _SpecularHighlights: 1
+    - _SpotTextureScale: 0.05
+    - _SrcBlend: 1
+    - _SteepBandStrength: 0.5
+    - _SteepBands: 8
+    - _SteepHeightThreshold: 0.517
+    - _SteepThreshold: 0.371
+    - _SteepThresholdBlend: 0.305
+    - _SteepThresholdNoise: 0.113
+    - _SteepnessNoiseStrength: 0.1
+    - _SteepnessSmoothing: 0.278
+    - _SteepnessThreshold: 0.378
+    - _ThresholdSmoothing: 0.205
+    - _UVSec: 0
+    - _UseSnowyPoles: 1
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 0.027672704, b: 0, a: 1}
+    - _Color2: {r: 0.053106308, g: 1, b: 0, a: 1}
+    - _ColorB: {r: 0.103773594, g: 0.058548227, b: 0.042586338, a: 1}
+    - _ColorG: {r: 0.18867922, g: 0.09410887, b: 0.05428977, a: 1}
+    - _ColorR: {r: 0.6428245, g: 0.6981132, b: 0, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FlatColA: {r: 0, g: 0.65882355, b: 0.5419607, a: 0}
+    - _FlatColB: {r: 0, g: 0.33468744, b: 0.38679248, a: 0}
+    - _FlatColC: {r: 0.027450986, g: 0.5428885, b: 0.5568628, a: 1}
+    - _FlatHighA: {r: 0.19073083, g: 0.4627451, b: 0, a: 1}
+    - _FlatHighB: {r: 0.030037375, g: 0.4245283, b: 0.27462178, a: 1}
+    - _FlatLowA: {r: 0.58431375, g: 0.85882354, b: 0, a: 1}
+    - _FlatLowB: {r: 0.25514066, g: 0.65882355, b: 0.06666665, a: 1}
+    - _FlatSpeckleA: {r: 0.101960786, g: 0.5372549, b: 0.54901963, a: 1}
+    - _FlatSpeckleB: {r: 0.8018868, g: 0.45051646, b: 0.16264686, a: 1}
+    - _FlatSpeckleCol: {r: 0.10065861, g: 0.5387706, b: 0.5471698, a: 1}
+    - _FresnelCol: {r: 0.9651973, g: 1, b: 0.57254905, a: 1}
+    - _GrassCol: {r: 0.4033858, g: 0.4433962, b: 0.064836234, a: 1}
+    - _Params: {r: 0.14, g: 0, b: 2.12, a: 20}
+    - _PoleNoiseWeights: {r: 1.59, g: 0.69, b: 0.77, a: 0}
+    - _SandCol: {r: 1, g: 1, b: 1, a: 1}
+    - _ShoreCol: {r: 1, g: 0.93270934, b: 0.6084906, a: 0}
+    - _ShoreHigh: {r: 0.9528302, g: 0.90580887, b: 0.38203096, a: 1}
+    - _ShoreLow: {r: 0.98039216, g: 1, b: 0.6666667, a: 1}
+    - _ShoreSpeckleCol: {r: 0.9245283, g: 0.89279854, b: 0.63234246, a: 1}
+    - _SnowCol: {r: 1, g: 1, b: 1, a: 1}
+    - _SteepColA: {r: 0.5294118, g: 0.48880482, b: 0.1882353, a: 0}
+    - _SteepColB: {r: 0.1509434, g: 0.0671594, b: 0, a: 1}
+    - _SteepHigh: {r: 0.14901961, g: 0.06666667, b: 0, a: 1}
+    - _SteepLow: {r: 0.5294118, g: 0.49019608, b: 0.1882353, a: 1}
+    - _TestParams: {r: -0.36, g: -0.05, b: 0.38, a: 0}

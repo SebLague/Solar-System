@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a813b0ccba3410b9a549474923d94b, type: 3}
+  m_Name: Spot1
+  m_EditorClassIdentifier: 
+  textureName: Dots CRISP2
+  textureSize: 1024
+  filterMode: 1
+  format: 8
+  useMips: 0
+  compute: {fileID: 7200000, guid: a06a7dddd79684a96a2169e2128e5f88, type: 3}
+  seed: 0
+  testParams: {x: 0, y: 0, z: 0, w: 0}
+  renderTexture: {fileID: 0}
+  fadeDst: 1
+  smoothing: 0
+  background: 0
+  layers:
+  - numCellsPerAxis: 10
+    radius: 54.2
+    alpha: 0.356
+  - numCellsPerAxis: 10
+    radius: 54.2
+    alpha: 0.356
+  - numCellsPerAxis: 10
+    radius: 54.2
+    alpha: 0.356
+  - numCellsPerAxis: 10
+    radius: 54.2
+    alpha: 0.356
+  - numCellsPerAxis: 15
+    radius: 54.2
+    alpha: 0.356
+  - numCellsPerAxis: 20
+    radius: 54.2
+    alpha: 0.356
+  - numCellsPerAxis: 25
+    radius: 54.2
+    alpha: 0.356
+  - numCellsPerAxis: 30
+    radius: 54.2
+    alpha: 0.356
+  blur: 0
+  blurCompute: {fileID: 7200000, guid: 3bbb70231abe74a25b57d54568b663d9, type: 3}
+  blurSize: 1
+  invertAlpha: 0
+  initialRadius: 53.58
+  radiusMultiplier: 0.7

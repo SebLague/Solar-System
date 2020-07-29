@@ -1,0 +1,41 @@
+﻿#pragma kernel CSMain
+#include "../../Includes/Craters.cginc"
+#include "../../Includes/FractalNoise.cginc"
+
+//
+StructuredBuffer<float3> vertices;
+RWStructuredBuffer<float> heights;
+uint numVertices;
+
+float4 testParams;
+
+// Noise settings
+float4 noiseParams_shape[3];
+float4 noiseParams_ridge[3];
+float4 noiseParams_ridge2[3];
+
+[numthreads(512, 1, 1)]
+void CSMain (uint id : SV_DispatchThreadID)
+{
+    if (id >= numVertices) { return; }
+	static const float elevationMultiplier = 0.01;
+
+   float3 pos = vertices[id];
+
+	// Craters
+	float craterDepth = calculateCraterDepth(pos);
+	// Low-frequency noise to add some slight deformation to the base sphere shape of the moon
+	float shapeNoise = simpleNoise(pos, noiseParams_shape);
+
+	// Ridge noise
+	float ridgeNoise = smoothedRidgidNoise(pos, noiseParams_ridge);
+	float ridge2 = smoothedRidgidNoise(pos, noiseParams_ridge2);
+
+	float noiseSum = (shapeNoise + ridgeNoise + ridge2) * elevationMultiplier;
+	float finalHeight = 1 + craterDepth + noiseSum;
+	heights[id] = finalHeight;
+
+	// Debug ridge mask
+	//terrainHeights[id] = 1 + ridgeMask * .1;
+	//terrainHeights[id] = 1 + ridgeNoise * elevationMultiplier;
+}

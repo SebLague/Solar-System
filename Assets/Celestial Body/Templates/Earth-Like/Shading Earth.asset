@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db6f66ab3e2604c0d9bcf6649e6d7915, type: 3}
+  m_Name: Shading Earth
+  m_EditorClassIdentifier: 
+  terrainMaterial: {fileID: 2100000, guid: 6b6d3f5beddd942d18a71a6456de5da5, type: 2}
+  hasAtmosphere: 0
+  atmosphereSettings: {fileID: 11400000, guid: 6d9878ed7c777432ab83c30096d0e91c, type: 2}
+  hasOcean: 1
+  oceanLevel: 1
+  oceanSettings: {fileID: 11400000, guid: 2dda04ece1bc5461c9c060d959433048, type: 2}
+  shadingDataCompute: {fileID: 7200000, guid: f3a2904f78271471481822700022a157, type: 3}
+  customizedCols:
+    shoreCol: {r: 1, g: 0.8784314, b: 0.64705884, a: 0}
+    flatColA: {r: 0.67058825, g: 0.8784314, b: 0.10980392, a: 0}
+    flatColB: {r: 0.19607843, g: 0.50980395, b: 0, a: 0}
+    steepColA: {r: 0.48235294, g: 0.3647059, b: 0.16470589, a: 0}
+    steepColB: {r: 0.11372549, g: 0.08627451, b: 0.06666667, a: 0}
+  randomizedCols:
+    shoreCol: {r: 0.3532806, g: 0.42222616, b: 0.14196815, a: 1}
+    flatColA: {r: 0.5312628, g: 0.74444747, b: 0.4348723, a: 1}
+    flatColB: {r: 0.1697011, g: 0.7972539, b: 0.8, a: 1}
+    steepColA: {r: 0.12647702, g: 0.21133627, b: 0.1303917, a: 1}
+    steepColB: {r: 0.2, g: 0.19099219, b: 0.16, a: 1}
+  detailWarpNoise:
+    numLayers: 4
+    lacunarity: 2
+    persistence: 0.5
+    scale: 2.96
+    elevation: 5
+    verticalShift: 0
+    offset: {x: 0, y: 0, z: 0}
+  detailNoise:
+    numLayers: 4
+    lacunarity: 2
+    persistence: 0.5
+    scale: 1.5
+    elevation: 1
+    verticalShift: 0
+    offset: {x: 0, y: 0, z: 0}
+  largeNoise:
+    numLayers: 4
+    lacunarity: 2
+    persistence: 0.5
+    scale: 1.52
+    elevation: 1
+    verticalShift: 0
+    offset: {x: 0, y: 0, z: 0}
+  smallNoise:
+    numLayers: 5
+    lacunarity: 4.13
+    persistence: 0.65
+    scale: 4.44
+    elevation: 0.52
+    verticalShift: 0
+    offset: {x: 0, y: 0, z: 0}

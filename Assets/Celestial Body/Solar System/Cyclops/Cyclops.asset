@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf43e303dd354502bcaddeec557e12a, type: 3}
+  m_Name: Cyclops
+  m_EditorClassIdentifier: 
+  shape: {fileID: 11400000, guid: 9824b58b758eb41cba66e9f03e1faed9, type: 2}
+  shading: {fileID: 11400000, guid: a806a0e0094bd441bb67d376448cfb7e, type: 2}

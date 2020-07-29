@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6237f4841244919bd904a9c5b610a1, type: 3}
+  m_Name: Shape
+  m_EditorClassIdentifier: 
+  randomize: 0
+  seed: 114
+  heightMapCompute: {fileID: 7200000, guid: b33d87d0482194cf2a21c78c2cc775f8, type: 3}
+  perturbVertices: 1
+  perturbCompute: {fileID: 7200000, guid: 0cc4782d709194aa5a22ed5e9ab8bf09, type: 3}
+  perturbStrength: 0.75
+  oceanDepthMultiplier: 5
+  oceanFloorDepth: 1.5
+  oceanFloorSmoothing: 0.3
+  mountainBlend: 3.19
+  continentNoise:
+    numLayers: 4
+    lacunarity: 2
+    persistence: 0.6
+    scale: 1
+    elevation: 1
+    verticalShift: 0
+    offset: {x: 0, y: 0, z: 0}
+  maskNoise:
+    numLayers: 4
+    lacunarity: 2
+    persistence: 0.5
+    scale: 1
+    elevation: 1
+    verticalShift: 0
+    offset: {x: 0, y: 0, z: 0}
+  warpNoise:
+    numLayers: 4
+    lacunarity: 0.2
+    persistence: 0.5
+    scale: 0.6
+    elevation: 1
+    verticalShift: 0
+    offset: {x: 0, y: 0, z: 0}
+  ridgeNoise:
+    numLayers: 5
+    lacunarity: 2
+    persistence: 0.5
+    scale: 1.38
+    power: 2
+    elevation: 10
+    gain: -1.64
+    verticalShift: 0
+    peakSmoothing: 2
+    offset: {x: 0, y: 0, z: 0}
+  craterSettings:
+    enabled: 1
+    craterSeed: 0
+    numCraters: 30
+    craterSizeMinMax: {x: 0.04, y: 0.41}
+    rimSteepness: 0.13
+    rimWidth: 1.6
+    smoothMinMax: {x: 0.4, y: 1.5}
+    sizeDistribution: 0.6
+    cachedCraters:
+    - centre: {x: 0.10850946, y: -0.6025402, z: -0.79067755}
+      size: 0.049104348
+      floorHeight: -1.0643059
+      smoothness: 1.472933
+    - centre: {x: -0.23738177, y: -0.68424714, z: 0.689533}
+      size: 0.058598883
+      floorHeight: -0.41331592
+      smoothness: 1.444706
+    - centre: {x: -0.25537375, y: 0.75274616, z: -0.6067598}
+      size: 0.08348244
+      floorHeight: -1.0110288
+      smoothness: 1.3707279
+    - centre: {x: -0.0062796506, y: -0.34723788, z: 0.93775606}
+      size: 0.3369139
+      floorHeight: -0.2
+      smoothness: 0.617283
+    - centre: {x: -0.49491987, y: -0.61244667, z: -0.6164117}
+      size: 0.042082462
+      floorHeight: -1.0601268
+      smoothness: 1.4938089
+    - centre: {x: -0.44729254, y: 0.8867752, z: 0.11644328}
+      size: 0.048949916
+      floorHeight: -0.94347054
+      smoothness: 1.4733921
+    - centre: {x: -0.81784636, y: -0.41054323, z: 0.40321395}
+      size: 0.040049344
+      floorHeight: -0.6531101
+      smoothness: 1.4998533
+    - centre: {x: -0.39749587, y: -0.4157367, z: -0.818022}
+      size: 0.10808719
+      floorHeight: -0.92506415
+      smoothness: 1.2975786
+    - centre: {x: 0.13961205, y: 0.88894796, z: -0.436211}
+      size: 0.10951554
+      floorHeight: -0.59580165
+      smoothness: 1.2933321
+    - centre: {x: -0.7425777, y: -0.084572084, z: -0.6643989}
+      size: 0.10327091
+      floorHeight: -0.80572385
+      smoothness: 1.3118973
+    - centre: {x: -0.3914723, y: 0.58811855, z: -0.70771885}
+      size: 0.2740295
+      floorHeight: -0.2
+      smoothness: 0.80423665
+    - centre: {x: -0.79393804, y: -0.59238154, z: -0.13691795}
+      size: 0.048074
+      floorHeight: -0.50354713
+      smoothness: 1.4759963
+    - centre: {x: 0.4495695, y: 0.71366054, z: 0.5371926}
+      size: 0.15275697
+      floorHeight: -0.23646201
+      smoothness: 1.1647766
+    - centre: {x: 0.06273361, y: -0.6759663, z: -0.73425746}
+      size: 0.2378017
+      floorHeight: -0.52480793
+      smoothness: 0.9119409
+    - centre: {x: -0.14862385, y: 0.9551357, z: -0.25617707}
+      size: 0.040859327
+      floorHeight: -0.45836797
+      smoothness: 1.4974452
+    - centre: {x: 0.87636715, y: 0.47824755, z: -0.057095885}
+      size: 0.048700072
+      floorHeight: -0.9347599
+      smoothness: 1.4741349
+    - centre: {x: 0.28438264, y: -0.76384115, z: 0.5793731}
+      size: 0.043793324
+      floorHeight: -0.53542054
+      smoothness: 1.4887226
+    - centre: {x: 0.5930007, y: 0.40063614, z: 0.69845605}
+      size: 0.058344204
+      floorHeight: -0.7017438
+      smoothness: 1.4454632
+    - centre: {x: -0.14232549, y: 0.9045734, z: -0.4018587}
+      size: 0.05929133
+      floorHeight: -1.1219883
+      smoothness: 1.4426473
+    - centre: {x: 0.40241355, y: 0.28788462, z: -0.86901426}
+      size: 0.14816646
+      floorHeight: -0.47815183
+      smoothness: 1.178424
+    - centre: {x: 0.5091076, y: 0.12971584, z: 0.85087204}
+      size: 0.040543444
+      floorHeight: -1.019983
+      smoothness: 1.4983844
+    - centre: {x: -0.087006904, y: -0.8947732, z: -0.43796194}
+      size: 0.05199794
+      floorHeight: -1.1001233
+      smoothness: 1.4643304
+    - centre: {x: 0.25342518, y: 0.05319771, z: 0.9658911}
+      size: 0.04028737
+      floorHeight: -1.1257778
+      smoothness: 1.4991456
+    - centre: {x: -0.17459115, y: 0.9799047, z: -0.09646094}
+      size: 0.043273233
+      floorHeight: -1.091911
+      smoothness: 1.4902687
+    - centre: {x: 0.6987061, y: -0.67901105, z: 0.22528613}
+      size: 0.049156047
+      floorHeight: -1.053091
+      smoothness: 1.4727794
+    - centre: {x: 0.559714, y: -0.5928626, z: 0.57899404}
+      size: 0.08001118
+      floorHeight: -1.0557077
+      smoothness: 1.3810478
+    - centre: {x: -0.52832985, y: 0.6093526, z: -0.5912335}
+      size: 0.059885688
+      floorHeight: -0.6863752
+      smoothness: 1.4408804
+    - centre: {x: -0.95303255, y: -0.18116699, z: -0.24270856}
+      size: 0.040509593
+      floorHeight: -0.96804553
+      smoothness: 1.498485
+    - centre: {x: 0.07793069, y: -0.7501454, z: -0.65666485}
+      size: 0.040204685
+      floorHeight: -0.86475
+      smoothness: 1.4993914
+    - centre: {x: 0.29520813, y: -0.85217136, z: -0.43203723}
+      size: 0.04043506
+      floorHeight: -0.5788766
+      smoothness: 1.4987066
+  testParams: {x: 103.03, y: 0, z: 210.9, w: 0}

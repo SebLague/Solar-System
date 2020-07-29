@@ -1,13 +1,17 @@
-﻿Shader "Unlit/DottedLine"
+﻿Shader "GameUI/DottedLine"
 {
     Properties
     {
+		 _Color("Colour", Color) = (1,1,1,1)
+		 _MaxAlpha("Max alpha", Range(0,1)) = 1
+		 _FadeDst("Fade Dst", Float) = 5
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" "Queue"="Overlay" }
+        Tags { "RenderType"="Transparent" "Queue"="Overlay" }
         ZTest Always
         ZWrite Off
+		  Blend SrcAlpha OneMinusSrcAlpha
         LOD 100
 
         Pass
@@ -32,6 +36,8 @@
 
             float4 _Color;
             float2 _Size;
+				float _FadeDst;
+				float _MaxAlpha;
 
             v2f vert (appdata v)
             {
@@ -45,12 +51,13 @@
             {
                 float x = i.uv.x * _Size.x;
                 int n = (int)(x/_Size.y*0.5);
+					 float alpha = saturate(x / _FadeDst) * _MaxAlpha;
                 
                 if (n%2==0) {
                     clip(-1);
                 }
 
-                return 1;
+                return float4(_Color.rbg, alpha);
                 return float4(i.uv.x,0,0,1);
             }
             ENDCG

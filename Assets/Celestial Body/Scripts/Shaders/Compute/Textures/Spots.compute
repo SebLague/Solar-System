@@ -1,0 +1,49 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+#include "../../Includes/Math.cginc"
+//
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float4> Result;
+StructuredBuffer<float4> spots;
+uint resolution;
+int numSpots;
+float background;
+float4 params;
+float smoothing;
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+   
+    if (id.x >= resolution || id.y >= resolution) {
+        return;
+    }
+
+    float2 pos = id.xy / (float)resolution;
+    float alpha = 0;
+   
+
+    float minDst = 999;
+    for (int i = 0; i < numSpots; i ++) {
+        float4 spot = spots[i];
+        float r = spot.z;
+
+        float dst = length(spot.xy - pos);
+        
+
+        float minDstOld = minDst;
+       // minDst = smoothMin(dst, minDst, smoothing * 0.001);
+
+        if ( dst <= r) {
+            //alpha = max(alpha, spot.w);
+            //float v = 1-dst/r;
+            //alpha += v*v*spot.w;
+				alpha = max(alpha,spot.w);
+        }
+    }
+    alpha = 1-saturate(background + alpha);
+    Result[id.xy] = float4(alpha, alpha, alpha, 1);//
+    
+}

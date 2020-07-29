@@ -1,0 +1,25 @@
+﻿#pragma kernel CSMain
+
+StructuredBuffer<float3> vertices;
+StructuredBuffer<int> triangles;
+RWStructuredBuffer<float> steepness;
+int numTriangles;
+
+[numthreads(256,1,1)]
+void CSMain (uint id : SV_DispatchThreadID)
+{
+	if ((int)id >= numTriangles) {
+		return;
+	}
+	
+	int triangleIndex = id * 3;
+	float3 a = vertices[triangles[triangleIndex]];
+	float3 b = vertices[triangles[triangleIndex+1]];
+	float3 c = vertices[triangles[triangleIndex+2]];
+
+	float3 faceNormal = normalize(cross(a-b, a-c));
+	float3 sphereNormal = normalize((a+b+c)/3);
+	steepness[id] = 1 - dot(faceNormal, sphereNormal);
+
+	
+}
