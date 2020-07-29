@@ -1,6 +1,6 @@
 # Solar System
 
-Little solar system experiment.
+Little solar system experiment inspired by Outer Wilds.
 Note: you'll need to have Blender installed to view some of the models.
 
 [Watch video](https://www.youtube.com/watch?v=7axImc1sxa0)
