@@ -40,6 +40,12 @@ GraphicsSettings:
   - {fileID: 16002, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 17000, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 4800000, guid: ebd63f199114146ddacca96d32c18d9e, type: 3}
+  - {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 4800000, guid: e5c9adc680af74e8fb0b8d63fb518c0a, type: 3}
+  - {fileID: 4800000, guid: d03ae1df4c5324c888d341830e3620ad, type: 3}
+  - {fileID: 4800000, guid: 5c954f4bd730d46199b888d542aded55, type: 3}
+  - {fileID: 4800000, guid: 5a711a01011934ebcb58ef5ad52159d6, type: 3}
+  - {fileID: 4800000, guid: 935232f54c5894b57ad19147233be3ae, type: 3}
   m_PreloadedShaders: []
   m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000,
     type: 0}
@@ -54,7 +60,7 @@ GraphicsSettings:
     m_Tier: 0
     m_Settings:
       standardShaderQuality: 2
-      renderingPath: 3
+      renderingPath: 1
       hdrMode: 1
       realtimeGICPUUsage: 50
       useReflectionProbeBoxProjection: 1
@@ -71,7 +77,7 @@ GraphicsSettings:
     m_Tier: 2
     m_Settings:
       standardShaderQuality: 2
-      renderingPath: 3
+      renderingPath: 1
       hdrMode: 1
       realtimeGICPUUsage: 50
       useReflectionProbeBoxProjection: 1
@@ -88,7 +94,7 @@ GraphicsSettings:
     m_Tier: 1
     m_Settings:
       standardShaderQuality: 2
-      renderingPath: 3
+      renderingPath: 1
       hdrMode: 1
       realtimeGICPUUsage: 50
       useReflectionProbeBoxProjection: 1

@@ -1,0 +1,87 @@
+﻿#pragma kernel CSMain
+#include "../../Includes/Math.cginc"
+
+RWTexture2D<float4> Result;
+int textureSize;
+int numOutScatteringSteps;
+float atmosphereRadius;
+float avgDensityHeight01;
+float densityFalloff;
+float4 params;
+
+float densityAtPoint(float2 densitySamplePoint) {
+	float planetRadius = 1;
+	float2 planetCentre = 0;
+
+	float heightAboveSurface = length(densitySamplePoint - planetCentre) - planetRadius;
+	float height01 = heightAboveSurface / (atmosphereRadius - planetRadius);
+	float localDensity = exp(-height01 * densityFalloff) * (1 - height01);
+	return localDensity;
+}
+
+float opticalDepth(float2 rayOrigin, float2 rayDir, float rayLength) {
+	int numOpticalDepthPoints = numOutScatteringSteps;
+
+	float2 densitySamplePoint = rayOrigin;
+	float stepSize = rayLength / (numOpticalDepthPoints - 1);
+	float opticalDepth = 0;
+
+	for (int i = 0; i < numOpticalDepthPoints; i ++) {
+		float localDensity = densityAtPoint(densitySamplePoint);
+		opticalDepth += localDensity * stepSize;
+		densitySamplePoint += rayDir * stepSize;
+	}
+	return opticalDepth;
+}
+
+
+float calculateOutScattering(float2 inPoint, float2 outPoint) {
+	float planetRadius = 1;
+	float skinWidth = planetRadius / 1000.0;
+	
+
+	float lightTravelDst = length(outPoint - inPoint);
+	float2 outScatterPoint = inPoint;
+	float2 rayDir = (outPoint - inPoint) / lightTravelDst;
+	float stepSize = (lightTravelDst - skinWidth) / (numOutScatteringSteps);
+	
+	float outScatterAmount = 0;
+
+	for (int i = 0; i < numOutScatteringSteps; i ++) {
+		outScatterPoint += rayDir * stepSize;
+
+		// height at planet surface = 0, at furthest extent of atmosphere = 1
+		float height = length(outScatterPoint - 0) - planetRadius;//
+
+	
+		
+		float height01 = saturate(height / (atmosphereRadius - planetRadius));
+		outScatterAmount += exp(-height01 * densityFalloff) * stepSize;
+		
+	}
+
+	return outScatterAmount;
+}
+
+[numthreads(8,8,1)]
+void CSMain (uint2 id : SV_DispatchThreadID)
+{
+	const float planetRadius = 1;
+
+	float2 uv = id / (float)textureSize;
+	float height01 = uv.y;
+	float angle = uv.x * PI;
+	//angle = (1-cos(angle))/2;
+	float2 dir = float2(sin(angle), cos(angle));
+	float y = -2 * uv.x + 1;
+	float x = sin(acos(y));
+	dir = float2(x,y);
+	
+	float2 inPoint = float2(0, lerp(planetRadius, atmosphereRadius, height01));
+	float dstThroughAtmosphere = raySphere(0, atmosphereRadius, float3(inPoint,0), float3(dir,0)).y;
+	float2 outPoint = inPoint + dir * raySphere(0, atmosphereRadius, float3(inPoint,0), float3(dir,0)).y;
+	//float outScattering = calculateOutScattering(inPoint, outPoint);
+	float outScattering = opticalDepth(inPoint + dir * 0.0001, dir, dstThroughAtmosphere-0.0002);
+
+	Result[id.xy] = outScattering;
+}
