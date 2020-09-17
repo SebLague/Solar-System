@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3809d83b02c81406f940133c41e93bf5, type: 3}
+  m_Name: At
+  m_EditorClassIdentifier: 
+  outScatterCompute: {fileID: 0}
+  textureSize: 256
+  numBakedOutScatteringSteps: 10
+  atmosphereShader: {fileID: 4800000, guid: 0b97cbbc1e6a746c4b5f4c41e71a8eb7, type: 3}
+  testParams: {x: 2.71, y: 1.03, z: 1, w: 0}
+  inScatteringPoints: 10
+  opticalDepthPoints: 10
+  densityFalloff: 0.25
+  scatteringConstant: 35.18
+  scatteringConstants: {x: 1, y: 1, z: 1}
+  wavelengthsRGB: {x: 436, y: 608, z: 434.5}
+  intensity: 1
+  extinction: 100
+  extinctionHDR: 1
+  umbraStrength: 10
+  ditherStrength: 0.8
+  blueNoise: {fileID: 2800000, guid: 2de3302b25aa74ea38d3ad3896c9c4e8, type: 3}
+  useBaked: 0
+  filterMode: 0
+  atmosphereCol: {r: 0.3726415, g: 0.6703337, b: 1, a: 1}
+  atmosphereScale: 0.492
+  timeOfDay: 0
+  sunDst: 1

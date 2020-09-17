@@ -23,4 +23,4 @@ MonoBehaviour:
   waveScale: 25
   waveSpeed: 0.5
   smoothness: 0.927
-  testParams: {x: 0.01, y: 50, z: 20, w: 9.4}
+  testParams: {x: 0, y: 50, z: 20, w: 9.4}

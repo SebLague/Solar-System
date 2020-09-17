@@ -439,6 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae48218d415048dfbd51fcd8cbb7f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputSettings: {fileID: 11400000, guid: 0e5a06a1eafad4497a5df01f7f393c80, type: 2}
   hatch: {fileID: 8968431872882210423}
   hatchAngle: -27
   camViewPoint: {fileID: 820172706874231170}
