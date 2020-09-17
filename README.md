@@ -1,8 +1,8 @@
 # Solar System
 
-Third installment of my little solar system experiment. Inspired by Outer Wilds.
+Development branch of my little solar system experiment. Inspired by Outer Wilds.
 
-Note: you'll need to have Blender installed to view some of the models.
+Notes: If you're looking for the code from a specific episode, you can find it in the branches. You may need to have Blender installed to view some of the 3D models.
 
 [Watch episode 01: Solar System](https://www.youtube.com/watch?v=7axImc1sxa0)
 
