@@ -2016,7 +2016,7 @@ MonoBehaviour:
       size: 0.010038274
       floorHeight: -1.1105224
       smoothness: 1.4996992
-    - centre: {x: -0.4962476, y: 0.44696972, z: 0.7442825}
+    - centre: {x: -0.4962476, y: 0.44696975, z: 0.7442825}
       size: 0.033101205
       floorHeight: -0.4588097
       smoothness: 1.3184905
@@ -2024,7 +2024,7 @@ MonoBehaviour:
       size: 0.02499983
       floorHeight: -0.8948426
       smoothness: 1.3821442
-    - centre: {x: -0.74957895, y: 0.65027064, z: 0.12361038}
+    - centre: {x: -0.74957895, y: 0.6502707, z: 0.12361038}
       size: 0.013112858
       floorHeight: -0.8342412
       smoothness: 1.4755418

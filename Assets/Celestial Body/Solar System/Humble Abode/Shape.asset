@@ -12,14 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f311f2d93be44f27934ae782409335b, type: 3}
   m_Name: Shape
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   randomize: 0
   seed: 0
+=======
+  randomize: 1
+<<<<<<< Updated upstream
+  seed: 5748
+=======
+  seed: 7459
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   heightMapCompute: {fileID: 7200000, guid: d6df9e6cc324e48a892dd6a9cf741d65, type: 3}
   perturbVertices: 1
   perturbCompute: {fileID: 7200000, guid: c95c667630d66481daf208e2a7a4d95d, type: 3}
   perturbStrength: 0.684
   oceanDepthMultiplier: 5
-  oceanFloorDepth: 1.36
+  oceanFloorDepth: 2
   oceanFloorSmoothing: 0.5
   mountainBlend: 1
   continentNoise:
@@ -28,8 +37,17 @@ MonoBehaviour:
     persistence: 0.5
     scale: 1
     elevation: 2.64
+<<<<<<< Updated upstream
     verticalShift: 0
+=======
+<<<<<<< Updated upstream
+    verticalShift: -0.63
+>>>>>>> Stashed changes
     offset: {x: 0, y: 0, z: 0}
+=======
+    verticalShift: 0
+    offset: {x: 0.49, y: 0.21, z: 0.32}
+>>>>>>> Stashed changes
   maskNoise:
     numLayers: 3
     lacunarity: 1.66
