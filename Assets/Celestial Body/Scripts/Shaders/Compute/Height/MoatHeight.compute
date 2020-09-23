@@ -1,0 +1,69 @@
+﻿#pragma kernel CSMain
+
+#include "../../Includes/FractalNoise.cginc"
+#include "../../Includes/Craters.cginc"
+//
+
+StructuredBuffer<float3> vertices;
+RWStructuredBuffer<float> heights;
+uint numVertices;
+
+// Continent settings:
+float shoreSteepness;
+float continentFlatness;
+float continentLevel;
+float2 maskMinMax;
+float mountainBlend;
+float4 noiseParams_continents[3];//
+float4 noiseParams_mask[3];
+
+// Ridge noise
+float4 noiseParams_mountains[3];
+float4 params;
+float mountainSmoothing;
+
+
+float calculateMountainNoise(float3 pos) {
+    float3 sphereNormal = pos;
+    float3 axisA = cross(sphereNormal, float3(0,1,0));
+    float3 axisB = cross(sphereNormal, axisA);
+
+    // Sample the noise several times at small offsets from the centre and average the result
+    // This reduces some of the harsh jaggedness that can occur
+    float offsetDst = mountainSmoothing * 0.01;
+    float sample0 = ridgidNoise(pos, noiseParams_mountains);
+    float sample1 = ridgidNoise(pos - axisA * offsetDst, noiseParams_mountains);
+    float sample2 = ridgidNoise(pos + axisA * offsetDst, noiseParams_mountains);
+    float sample3 = ridgidNoise(pos - axisB * offsetDst, noiseParams_mountains);
+    float sample4 = ridgidNoise(pos + axisB * offsetDst, noiseParams_mountains);
+    return (sample0 + sample1 + sample2 + sample3 + sample4) / 5;
+}
+
+[numthreads(512,1,1)]
+void CSMain (uint id : SV_DispatchThreadID)
+{
+    if (id >= numVertices) {
+        return;
+    }
+
+    float3 pos = vertices[id];
+
+	 float continentShape = simpleNoise(pos, noiseParams_continents);
+	 continentShape = continentShape * (1 + continentShape / continentLevel * shoreSteepness);
+	 if (continentShape < 0) {
+		 continentShape *= 1+mountainSmoothing * abs(continentShape);
+	 }
+
+	 float craterDepth = calculateCraterDepth(pos);
+	 
+	 //float heightAboveShore = max(0, continentShape);
+	 //float k = (1 - saturate(heightAboveShore / continentLevel)) * shoreSteepness;
+	// continentShape = smoothMin(continentShape, 0, shoreSteepness);
+    
+
+    // Calculate final height
+	float finalHeight = 1 + continentShape * 0.01 + craterDepth;
+
+    // Set terrain data
+    heights[id] = finalHeight;
+}

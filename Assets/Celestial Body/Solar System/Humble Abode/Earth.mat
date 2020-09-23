@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Earth
   m_Shader: {fileID: 4800000, guid: fa2bee6d3f5064024b6434575359a23b, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _USESNOWYPOLES_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -100,7 +100,7 @@ Material:
     - _MaxFlatHeight: 0.52
     - _Metallic: 0
     - _Mode: 0
-    - _NoiseScale: 10
+    - _NoiseScale: 5
     - _NoiseScale2: 50
     - _NormalMapStrength: 0.735
     - _OcclusionStrength: 1
@@ -111,14 +111,14 @@ Material:
     - _PoleBiomeStart: 0.844
     - _RockNormalMapStrength: 0
     - _RockNormalScale: 21.16
-    - _ShoreBlend: 0.089
-    - _ShoreHeight: 0.058
+    - _ShoreBlend: 0.032
+    - _ShoreHeight: 0.061
     - _SmoothnessTextureChannel: 0
     - _SnowAltitude: 0.518
     - _SnowAltitudeBlend: 0.336
-    - _SnowBlend: 0.03
+    - _SnowBlend: 0.092
     - _SnowHighlight: 1.2
-    - _SnowLongitude: 0.94
+    - _SnowLongitude: 0.906
     - _SnowNoiseA: 3
     - _SnowNoiseB: 2.87
     - _SnowNormalMapStrength: 0.948
@@ -141,7 +141,7 @@ Material:
     - _SteepnessThreshold: 0.378
     - _ThresholdSmoothing: 0.205
     - _UVSec: 0
-    - _UseSnowyPoles: 0
+    - _UseSnowyPoles: 1
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 0.027672704, b: 0, a: 1}
@@ -154,9 +154,9 @@ Material:
     - _FlatColB: {r: 0, g: 0.33468744, b: 0.38679248, a: 0}
     - _FlatColC: {r: 0.027450986, g: 0.5428885, b: 0.5568628, a: 1}
     - _FlatHighA: {r: 0.19073083, g: 0.4627451, b: 0, a: 1}
-    - _FlatHighB: {r: 0.19215687, g: 0.4627451, b: 0, a: 1}
-    - _FlatLowA: {r: 0.7898985, g: 0.85882354, b: 0, a: 1}
-    - _FlatLowB: {r: 0.58431375, g: 0.85882354, b: 0, a: 1}
+    - _FlatHighB: {r: 0.030037375, g: 0.4245283, b: 0.27462178, a: 1}
+    - _FlatLowA: {r: 0.58431375, g: 0.85882354, b: 0, a: 1}
+    - _FlatLowB: {r: 0.25514066, g: 0.65882355, b: 0.06666665, a: 1}
     - _FlatSpeckleA: {r: 0.101960786, g: 0.5372549, b: 0.54901963, a: 1}
     - _FlatSpeckleB: {r: 0.8018868, g: 0.45051646, b: 0.16264686, a: 1}
     - _FlatSpeckleCol: {r: 0.10065861, g: 0.5387706, b: 0.5471698, a: 1}

@@ -1,0 +1,101 @@
+﻿#pragma kernel CSMain
+#pragma kernel Normalize
+#include "../../Includes/SimplexNoise3.cginc"
+
+static const int minMaxAccuracy = 1000000;
+RWTexture2D<float4> Result;
+uint resolution;
+
+RWStructuredBuffer<int> minMax;
+float4 noiseParams_simple[3];
+float4 noiseParams_warp[3];
+float valueFloor;
+float4 params;
+
+// Remap a value (with a known mininum and maximum) to a value between 0 and 1
+float remap01(float v, float minOld, float maxOld) {
+    return saturate((v-minOld) / (maxOld-minOld));
+}
+
+
+//
+float tilingNoise(float2 pos, float4 noiseParams[3], float warp) {
+    static const int x1 =-1, y1=-1, x2=1, y2=1;
+    static const float dx = x2 - x1;
+    static const float dy = y2 - y1;
+    static const float tau = 3.14159265359 * 2;
+
+     // Params
+    float3 offset = warp;
+	 float3 offset3d = noiseParams[0].xyz;//
+    int numLayers = int(noiseParams[0].w);
+    float persistence = noiseParams[1].x;
+    float lacunarity = noiseParams[1].y;
+    float scale = noiseParams[1].z;
+    float multiplier = noiseParams[1].w;
+
+    // web.archive.org/web/20160304043608/https://www.gamedev.net/blog/33/entry-2138456-seamless-noise/
+    float nx = x1 + cos(pos.x * tau) * dx;
+    float ny = y1 + cos(pos.y * tau) * dy;
+    float nz = x1 + sin(pos.x * tau) * dx;
+    float nw = y1 + sin (pos.y * tau) * dy;
+    float4 pos4D = float4(nx, ny, nz, nw) / tau;
+    float4 dir = normalize(pos4D);
+    pos4D += dir * 0.1 * params.x; 
+    //pos4D += snoise(pos4D * params.w * 0.001);
+
+    float noise = 0;
+    float amplitude = 1;
+    float frequency = scale;
+    
+    for (int i = 0; i < numLayers; i ++) {
+        float layerVal = snoise((pos4D + warp) * frequency);//
+        //layerVal = 1-abs(layerVal);
+        //layerVal *= layerVal;
+        noise += layerVal * amplitude;
+        amplitude *= persistence;
+        frequency *= lacunarity;
+    }
+
+    return noise * multiplier;
+}
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= resolution || id.y >= resolution) {
+        return;
+    }
+
+    float2 pos = id.xy/(float)resolution;
+
+    float warpNoise = tilingNoise(pos, noiseParams_warp, 0) * 0.1;
+    float noise = tilingNoise(pos, noiseParams_simple, warpNoise);
+
+    // keep inside range [0,1] as will be clamped in texture
+    float approxMax = 2;
+    noise = saturate((noise + approxMax * 0.5) / approxMax);
+
+
+    Result[id.xy] = noise;
+
+    // keep track of min max (using int to support atomic operation)
+    int val = (int)(noise * minMaxAccuracy);
+    InterlockedMin(minMax[0],val);
+    InterlockedMax(minMax[1],val);
+}
+
+[numthreads(8,8,1)]
+void Normalize (uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= resolution || id.y >= resolution) {
+        return;
+    }
+
+    float minVal = (float)minMax[0]/minMaxAccuracy;
+    float maxVal = (float)minMax[1]/minMaxAccuracy;
+    float4 normalizedValue = (Result[id.xy]-minVal)/(maxVal-minVal);
+
+
+    Result[id.xy] = normalizedValue;
+}

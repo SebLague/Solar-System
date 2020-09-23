@@ -2,12 +2,12 @@
 {
     Properties
     {
-        [HDR]_Color ("Colour", Color) = (1,1,1,1)
+        _Color ("Colour", Color) = (1,1,1,1)
 		  _Intensity("Intensity", Float) = 1
     }
     SubShader
     {
-        Tags { "Queue"="Geometry" }
+        Tags { "RenderType"="Opaque" }
         LOD 100
 
         Pass
@@ -43,7 +43,7 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
-                return _Color;
+                return _Color * _Intensity;
             }
             ENDCG
         }

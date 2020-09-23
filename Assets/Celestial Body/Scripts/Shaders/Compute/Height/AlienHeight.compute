@@ -1,0 +1,57 @@
+﻿#pragma kernel CSMain
+
+#include "../../Includes/FractalNoise.cginc"
+#include "../../Includes/Craters.cginc"
+//
+
+StructuredBuffer<float3> vertices;
+RWStructuredBuffer<float> heights;
+uint numVertices;
+
+
+// Continent settings:
+float oceanDepthMultiplier;
+float oceanFloorDepth;
+float oceanFloorSmoothing;
+float mountainBlend;
+
+// Old:
+float4 noiseParams_continents[3];
+float4 noiseParams_mask[3];
+float4 noiseParams_mountains[3];
+float4 noiseParams_warp[3];
+float4 params;
+
+
+[numthreads(512,1,1)]
+void CSMain (uint id : SV_DispatchThreadID)
+{
+    if (id >= numVertices) {
+        return;
+    }
+
+	float3 pos = vertices[id];
+	float3 warpNoise = float3(simpleNoise(pos, noiseParams_warp),simpleNoise(pos-100, noiseParams_warp),simpleNoise(pos+100, noiseParams_warp)) * 0.01;
+	float3 warpedPos = pos + warpNoise;
+	float craterDepth = calculateCraterDepth(pos);
+
+	float continentShape = simpleNoise(pos + warpNoise * params.x, noiseParams_continents);
+
+	continentShape = smoothMax(continentShape, -oceanFloorDepth, oceanFloorSmoothing);
+
+
+	if (continentShape < 0) {
+		continentShape *= 1 + oceanDepthMultiplier;
+	}
+
+	float ridgeNoise = smoothedRidgidNoise(pos + warpNoise * params.y, noiseParams_mountains);
+
+
+	float mask = Blend(0, mountainBlend, simpleNoise(pos + warpNoise * params.z, noiseParams_mask));
+	// Calculate final height
+	float finalHeight = 1 + continentShape * 0.01 + ridgeNoise * 0.01 * mask + craterDepth;
+	//finalHeight = 1 + Blend(0, params.x, simpleNoise(pos, noiseParams_mask)) * 0.05;
+
+	// Set terrain data
+	heights[id] = finalHeight;
+}

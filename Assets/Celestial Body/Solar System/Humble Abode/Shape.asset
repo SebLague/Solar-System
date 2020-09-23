@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f311f2d93be44f27934ae782409335b, type: 3}
   m_Name: Shape
   m_EditorClassIdentifier: 
-  randomize: 1
-  seed: 5748
+  randomize: 0
+  seed: 0
   heightMapCompute: {fileID: 7200000, guid: d6df9e6cc324e48a892dd6a9cf741d65, type: 3}
   perturbVertices: 1
   perturbCompute: {fileID: 7200000, guid: c95c667630d66481daf208e2a7a4d95d, type: 3}
@@ -21,14 +21,14 @@ MonoBehaviour:
   oceanDepthMultiplier: 5
   oceanFloorDepth: 1.36
   oceanFloorSmoothing: 0.5
-  mountainBlend: 1.16
+  mountainBlend: 1
   continentNoise:
     numLayers: 6
     lacunarity: 2
     persistence: 0.5
     scale: 1
     elevation: 2.64
-    verticalShift: -0.63
+    verticalShift: 0
     offset: {x: 0, y: 0, z: 0}
   maskNoise:
     numLayers: 3

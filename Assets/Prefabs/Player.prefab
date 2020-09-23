@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 5406502976396438918}
   - component: {fileID: 5406502976396438919}
   - component: {fileID: 4366694239259388253}
-  - component: {fileID: 607764684488597912}
   m_Layer: 8
   m_Name: Camera
   m_TagString: MainCamera
@@ -202,7 +201,7 @@ Camera:
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 0
+  m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!81 &5406502976396438919
@@ -225,25 +224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ca94e2d12074332bc6643cb1b5e4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects:
-  - {fileID: 11400000, guid: 2a0830d1f8e1c4c019b5757c93f3297a, type: 2}
-  - {fileID: 11400000, guid: 84b638ca20bd24edf9d42d3686bb3b4d, type: 2}
-  - {fileID: 11400000, guid: 9670340ab10df4930aaaeecbce049971, type: 2}
-  debugOceanMask: 0
---- !u!114 &607764684488597912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5406502976396438921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474eb7563908b4b61b85e5427ca76c82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  oceanMaskShader: {fileID: 4800000, guid: 5c954f4bd730d46199b888d542aded55, type: 3}
-  oceanMaskTexture: {fileID: 0}
 --- !u!1 &5406502976704646146
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,11 +283,10 @@ MonoBehaviour:
   jetpackDuration: 3
   jetpackRefuelTime: 2
   jetpackRefuelDelay: 2
-  mouseSensitivityMultiplier: 1
-  maxMouseSmoothTime: 0.3
+  mouseSensitivity: 10
+  rotationSmoothTime: 0.1
   pitchMinMax: {x: -80, y: 65}
   lockCursor: 1
-  inputSettings: {fileID: 11400000, guid: 0e5a06a1eafad4497a5df01f7f393c80, type: 2}
   mass: 70
   walkableMask:
     serializedVersion: 2

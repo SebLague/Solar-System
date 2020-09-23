@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a436a8ab50b445abf81aaf5383b802, type: 3}
   m_Name: Shading
   m_EditorClassIdentifier: 
-  randomize: 0
   seed: 10
   terrainMaterial: {fileID: 2100000, guid: a306285242da94fd09ea55b1d7bcac09, type: 2}
-  hasAtmosphere: 1
-  atmosphereSettings: {fileID: 11400000, guid: 7cf94c475856943c6967dd4a2f16d7d1, type: 2}
+  hasAtmosphere: 0
+  atmosphereSettings: {fileID: 0}
   hasOcean: 1
   oceanLevel: 1
   oceanSettings: {fileID: 11400000, guid: 5285c9a18911c40b5a8b66a39671b25e, type: 2}

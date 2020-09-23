@@ -1,0 +1,29 @@
+﻿#pragma kernel CSMain
+#include "../../Includes/FractalNoise.cginc"
+
+RWStructuredBuffer<float3> points;
+uint numPoints;
+float maxStrength;
+
+float3 perturb(float3 pos) {
+	float3 noise = fractalNoiseGrad(pos, 4, 25, .5, 2).xyz;
+	noise = smoothstep(-1,1,noise) * 2 -1;
+	return noise;
+}
+
+[numthreads(512,1,1)]
+void CSMain (uint id : SV_DispatchThreadID)
+{
+	if (id >= numPoints) {
+		return;
+	}
+
+	float3 pos = points[id];
+	float height = length(pos);
+
+	float3 offset = perturb(pos);
+	float3 newPos = pos + offset * maxStrength;
+
+	newPos = normalize(newPos) * height;
+	points[id] = newPos;
+}

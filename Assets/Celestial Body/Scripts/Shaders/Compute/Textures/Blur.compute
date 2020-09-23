@@ -1,0 +1,37 @@
+﻿#pragma kernel CSMain
+
+Texture2D<float4> SourceTex;
+RWTexture2D<float4> Result;
+
+uint textureSize;
+int blurSize;
+
+uint2 Wrap(int x, int y) {
+    x = (x < 0) ? textureSize + x : x;
+    x = (x >= (int)textureSize) ? x - textureSize : x;
+    y = (y < 0) ? textureSize + y : y;
+    y = (y >= (int)textureSize) ? y - textureSize : y;
+    return uint2(x, y);
+}
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= textureSize || id.y >= textureSize) {
+        return;
+    }
+
+    float4 sum = 0;
+    for (int offsetX = -blurSize; offsetX <= blurSize; offsetX ++) {
+        for (int offsetY = -blurSize; offsetY <= blurSize; offsetY ++) {
+            uint2 sampleCoord = Wrap(id.x + offsetX, id.y + offsetY);
+            float4 sample = SourceTex[sampleCoord];
+            sum += sample;
+        }
+    }
+    
+    int numSamples = (blurSize * 2 + 1) * (blurSize * 2 + 1);
+    float4 result = sum / numSamples;
+
+    Result[id.xy] = result;
+}
