@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f311f2d93be44f27934ae782409335b, type: 3}
+  m_Name: New Earth Shape
+  m_EditorClassIdentifier: 
+  randomize: 1
+  seed: -9054
+  heightMapCompute: {fileID: 7200000, guid: d6df9e6cc324e48a892dd6a9cf741d65, type: 3}
+  perturbVertices: 0
+  perturbCompute: {fileID: 7200000, guid: c95c667630d66481daf208e2a7a4d95d, type: 3}
+  perturbStrength: 0.798
+  oceanDepthMultiplier: 9.08
+  oceanFloorDepth: 1.63
+  oceanFloorSmoothing: 1.83
+  mountainBlend: 1.05
+  continentNoise:
+    numLayers: 4
+    lacunarity: 2.6
+    persistence: 0.43
+    scale: 1.27
+    elevation: 1.32
+    verticalShift: 0.07
+    offset: {x: 0, y: 0, z: 0}
+  maskNoise:
+    numLayers: 4
+    lacunarity: 2
+    persistence: 0.98
+    scale: 1
+    elevation: 1
+    verticalShift: 0
+    offset: {x: 0, y: 0, z: 0}
+  ridgeNoise:
+    numLayers: 4
+    lacunarity: 5.69
+    persistence: -0.29
+    scale: -0.36
+    power: 2.24
+    elevation: -1.55
+    gain: 1.01
+    verticalShift: 0
+    peakSmoothing: 0
+    offset: {x: 0, y: 0, z: 0}
+  testParams: {x: 0, y: 0, z: 0, w: 0}

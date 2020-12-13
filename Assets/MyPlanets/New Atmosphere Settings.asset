@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3809d83b02c81406f940133c41e93bf5, type: 3}
+  m_Name: New Atmosphere Settings
+  m_EditorClassIdentifier: 
+  enabled: 1
+  atmosphereShader: {fileID: 4800000, guid: e5c9adc680af74e8fb0b8d63fb518c0a, type: 3}
+  opticalDepthCompute: {fileID: 7200000, guid: 463adb4526f5a48bdb8c71df4c6dd88d, type: 3}
+  textureSize: 256
+  inScatteringPoints: 10
+  opticalDepthPoints: 10
+  densityFalloff: 0.25
+  wavelengths: {x: 700, y: 530, z: 460}
+  testParams: {x: 7, y: 1.26, z: 0.1, w: 3}
+  scatteringStrength: 20
+  intensity: 1
+  ditherStrength: 0.8
+  ditherScale: 4
+  blueNoise: {fileID: 2800000, guid: 8886a14b14a1b44089f789c0b8c05643, type: 3}
+  atmosphereScale: 0.497
+  timeOfDay: 0
+  sunDst: 1
