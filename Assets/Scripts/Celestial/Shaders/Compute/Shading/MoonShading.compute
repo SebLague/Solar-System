@@ -20,7 +20,7 @@ StructuredBuffer<float4> ejectaCraters;
 int numEjectaCraters;
 
 float calcSphereNoise(float3 pos) {
-	float sphereNoise = 1.#INF;
+	float sphereNoise = 3.402823466e+38F;
 	for (int i = 0; i < numRandomPoints; i ++) {
 		float3 sphereCentre = points[i].xyz;
 		float sphereRadius = points[i].w;
