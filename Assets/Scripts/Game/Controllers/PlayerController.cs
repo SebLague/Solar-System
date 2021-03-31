@@ -37,6 +37,8 @@ public class PlayerController : GravityObject {
 	float pitch;
 	float smoothYaw;
 	float smoothPitch;
+	
+	float smoothYawOld;
 
 	float yawSmoothV;
 	float pitchSmoothV;
@@ -45,6 +47,8 @@ public class PlayerController : GravityObject {
 	Vector3 cameraLocalPos;
 	Vector3 smoothVelocity;
 	Vector3 smoothVRef;
+	
+	bool isGrounded;
 
 	// Jetpack
 	bool usingJetpack;
@@ -77,33 +81,50 @@ public class PlayerController : GravityObject {
 	}
 
 	void Update () {
-		HandleMovement ();
-	}
-
-	void HandleMovement () {
-		HandleEditorInput ();
 		if (Time.timeScale == 0) {
 			return;
 		}
+		
+		HandleInput();
+
+		// Refuel jetpack
+		if (Time.time - lastJetpackUseTime > jetpackRefuelDelay) {
+			jetpackFuelPercent = Mathf.Clamp01 (jetpackFuelPercent + Time.deltaTime / jetpackRefuelTime);
+		}
+
+		// Handle animations
+		float currentSpeed = smoothVelocity.magnitude;
+		float animationSpeedPercent = (currentSpeed <= walkSpeed) ? currentSpeed / walkSpeed / 2 : currentSpeed / runSpeed;
+		animator.SetBool ("Grounded", isGrounded);
+		animator.SetFloat ("Speed", animationSpeedPercent);
+	}
+
+	void HandleInput()
+	{
+		HandleEditorInput();
+
 		// Look input
 		yaw += Input.GetAxisRaw ("Mouse X") * inputSettings.mouseSensitivity / 10 * mouseSensitivityMultiplier;
 		pitch -= Input.GetAxisRaw ("Mouse Y") * inputSettings.mouseSensitivity / 10 * mouseSensitivityMultiplier;
 		pitch = Mathf.Clamp (pitch, pitchMinMax.x, pitchMinMax.y);
 		float mouseSmoothTime = Mathf.Lerp (0.01f, maxMouseSmoothTime, inputSettings.mouseSmoothing);
 		smoothPitch = Mathf.SmoothDampAngle (smoothPitch, pitch, ref pitchSmoothV, mouseSmoothTime);
-		float smoothYawOld = smoothYaw;
+		smoothYawOld = smoothYaw;
 		smoothYaw = Mathf.SmoothDampAngle (smoothYaw, yaw, ref yawSmoothV, mouseSmoothTime);
-		if (!debug_playerFrozen && Time.timeScale > 0) {
-			cam.transform.localEulerAngles = Vector3.right * smoothPitch;
-			transform.Rotate (Vector3.up * Mathf.DeltaAngle (smoothYawOld, smoothYaw), Space.Self);
-		}
 
-		// Movement
-		bool isGrounded = IsGrounded ();
+		// Movement input
+		isGrounded = IsGrounded ();
 		Vector3 input = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxisRaw ("Vertical"));
 		bool running = Input.GetKey (KeyCode.LeftShift);
 		targetVelocity = transform.TransformDirection (input.normalized) * ((running) ? runSpeed : walkSpeed);
 		smoothVelocity = Vector3.SmoothDamp (smoothVelocity, targetVelocity, ref smoothVRef, (isGrounded) ? vSmoothTime : airSmoothTime);
+	}
+
+	void HandleMovement () {
+		if (!debug_playerFrozen && Time.timeScale > 0) {
+			cam.transform.localEulerAngles = Vector3.right * smoothPitch;
+			transform.Rotate (Vector3.up * Mathf.DeltaAngle (smoothYawOld, smoothYaw), Space.Self);
+		}
 
 		//bool inWater = referenceBody
 		if (isGrounded) {
@@ -128,17 +149,6 @@ public class PlayerController : GravityObject {
 		} else {
 			usingJetpack = false;
 		}
-
-		// Refuel jetpack
-		if (Time.time - lastJetpackUseTime > jetpackRefuelDelay) {
-			jetpackFuelPercent = Mathf.Clamp01 (jetpackFuelPercent + Time.deltaTime / jetpackRefuelTime);
-		}
-
-		// Handle animations
-		float currentSpeed = smoothVelocity.magnitude;
-		float animationSpeedPercent = (currentSpeed <= walkSpeed) ? currentSpeed / walkSpeed / 2 : currentSpeed / runSpeed;
-		animator.SetBool ("Grounded", isGrounded);
-		animator.SetFloat ("Speed", animationSpeedPercent);
 	}
 
 	bool IsGrounded () {
@@ -165,6 +175,12 @@ public class PlayerController : GravityObject {
 	}
 
 	void FixedUpdate () {
+		if (Time.timeScale == 0) {
+			return;
+		}
+		
+		HandleMovement();
+		
 		CelestialBody[] bodies = NBodySimulation.Bodies;
 		Vector3 gravityOfNearestBody = Vector3.zero;
 		float nearestSurfaceDst = float.MaxValue;
@@ -188,7 +204,7 @@ public class PlayerController : GravityObject {
 
 		// Rotate to align with gravity up
 		Vector3 gravityUp = -gravityOfNearestBody.normalized;
-		rb.rotation = Quaternion.FromToRotation (transform.up, gravityUp) * rb.rotation;
+		transform.rotation = Quaternion.FromToRotation (transform.up, gravityUp) * transform.rotation;
 
 		// Move
 		rb.MovePosition (rb.position + smoothVelocity * Time.fixedDeltaTime);
