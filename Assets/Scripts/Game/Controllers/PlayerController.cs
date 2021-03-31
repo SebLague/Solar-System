@@ -81,6 +81,10 @@ public class PlayerController : GravityObject {
 	}
 
 	void Update () {
+		if (Time.timeScale == 0) {
+			return;
+		}
+		
 		HandleInput();
 
 		// Refuel jetpack
@@ -117,10 +121,6 @@ public class PlayerController : GravityObject {
 	}
 
 	void HandleMovement () {
-		if (Time.timeScale == 0) {
-			return;
-		}
-
 		if (!debug_playerFrozen && Time.timeScale > 0) {
 			cam.transform.localEulerAngles = Vector3.right * smoothPitch;
 			transform.Rotate (Vector3.up * Mathf.DeltaAngle (smoothYawOld, smoothYaw), Space.Self);
@@ -175,6 +175,10 @@ public class PlayerController : GravityObject {
 	}
 
 	void FixedUpdate () {
+		if (Time.timeScale == 0) {
+			return;
+		}
+		
 		HandleMovement();
 		
 		CelestialBody[] bodies = NBodySimulation.Bodies;
