@@ -1,0 +1,53 @@
+﻿/***************************************************************************
+*                                                                          *
+*  Copyright (c) Raphaël Ernaelsten (@RaphErnaelsten)                      *
+*  All Rights Reserved.                                                    *
+*                                                                          *
+*  NOTICE: Although Aura (or Aura 1) is still a free project, it is not    *
+*          open-source nor in the public domain anymore.                   *
+*          Aura is now governed by the End Used License Agreement of       *
+*          the Asset Store of Unity Technologies.                          *
+*                                                                          * 
+*  All information contained herein is, and remains the property of        *
+*  Raphaël Ernaelsten.                                                     *
+*  The intellectual and technical concepts contained herein are            *
+*  proprietary to Raphaël Ernaelsten and are protected by copyright laws.  *
+*  Dissemination of this information or reproduction of this material      *
+*  is strictly forbidden.                                                  *
+*                                                                          *
+***************************************************************************/
+
+#include "../Includes/Common.cginc"
+
+Texture2D<half> depthTexture;
+RWTexture2D<half> occlusionTexture;
+
+groupshared uint minimumDepth = 0xFFFFFFFF; //Because we're in REVERSED_Z
+
+#pragma kernel ComputeOcclusionTexture NUM_THREADS_X=1 NUM_THREADS_Y=2
+#pragma kernel ComputeOcclusionTexture NUM_THREADS_X=2 NUM_THREADS_Y=4
+#pragma kernel ComputeOcclusionTexture NUM_THREADS_X=4 NUM_THREADS_Y=8
+#pragma kernel ComputeOcclusionTexture NUM_THREADS_X=8 NUM_THREADS_Y=16
+#pragma kernel ComputeOcclusionTexture NUM_THREADS_X=16 NUM_THREADS_Y=32
+
+[numthreads(NUM_THREADS_X,NUM_THREADS_Y,1)]
+void ComputeOcclusionTexture(uint3 dispatchThreadID : SV_DispatchThreadID, uint3 groupID : SV_GroupID, uint3 groupThreadID : SV_GroupThreadID)
+{
+    float2 normalizedLocalPos = ((float2)dispatchThreadID.xy + float2(0.5f, 0.5f)) / bufferResolution.xy / float2(NUM_THREADS_X, NUM_THREADS_Y);
+    
+    uint depth = asuint(depthTexture.SampleLevel(_PointClamp, normalizedLocalPos, 0).x);
+    
+    GroupMemoryBarrierWithGroupSync();
+    
+    InterlockedMin(minimumDepth, depth); //Because we're in REVERSED_Z
+    
+    GroupMemoryBarrierWithGroupSync();
+
+    if(groupThreadID.x == 0 && groupThreadID.y == 0)
+    {
+        float depth = InverseLerp(cameraRanges.x, cameraRanges.y, GetLinearDepth(asfloat(minimumDepth), zParameters));
+		depth = GetBiasedNormalizedDepth(depth);
+
+        occlusionTexture[groupID.xy] = depth;
+    }
+}

@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 96ba1c54b4f39f241981a1c7e2d1450b
+timeCreated: 1510043946
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - logoTexture: {fileID: 2800000, guid: 97dce7f7c39611f45a4bb637c1682e45, type: 3}
+  - baseInjectionIconTexture: {fileID: 2800000, guid: 06dbda525928a2f4c9c67440be96b450,
+      type: 3}
+  - injectionIconTexture: {fileID: 2800000, guid: 1d01dbf5cd43c6246a84cc21b5832f53,
+      type: 3}
+  - settingsIconTexture: {fileID: 2800000, guid: 1da73fc212ca420489600719aedcf986,
+      type: 3}
+  - gridIconTexture: {fileID: 2800000, guid: 995be0c349bdbfe4b93cf596007ac4f3, type: 3}
+  - injectionContributionIconTexture: {fileID: 2800000, guid: c3360d61de6a59544b1d385788f8444e,
+      type: 3}
+  - experimentalFeaturesIconTexture: {fileID: 2800000, guid: 91aab3fee7bb9204babe50b2a62dbd99,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6a88621852a8d6a4e909333950ac83d4
+timeCreated: 1511267147
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - logoTexture: {fileID: 2800000, guid: 97dce7f7c39611f45a4bb637c1682e45, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

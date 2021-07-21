@@ -16,7 +16,7 @@ MonoBehaviour:
   seed: -393
   terrainMaterial: {fileID: 2100000, guid: f86eaa26ae1f56d49aadf147fb772ac2, type: 2}
   hasAtmosphere: 1
-  atmosphereSettings: {fileID: 11400000, guid: 63cd7c92d90753448bb0a62901e515c2, type: 2}
+  atmosphereSettings: {fileID: 11400000, guid: 1f6b15315e4a6cf45813a55fad197057, type: 2}
   hasOcean: 1
   oceanLevel: 0.535
   oceanSettings: {fileID: 11400000, guid: 8bf10de45649f8c4ca772f70b9e2e631, type: 2}

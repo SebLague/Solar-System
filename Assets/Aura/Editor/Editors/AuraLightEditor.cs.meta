@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 68f55dafa244a20438e3355e4b0f4d7c
+timeCreated: 1509994422
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - logoTexture: {fileID: 2800000, guid: 97dce7f7c39611f45a4bb637c1682e45, type: 3}
+  - settingsIconTexture: {fileID: 2800000, guid: 1da73fc212ca420489600719aedcf986,
+      type: 3}
+  - additionalSettingsIconTexture: {fileID: 2800000, guid: 7034a9c0424760f48abd119ee55d72ec,
+      type: 3}
+  - lightIconTexture: {fileID: 2800000, guid: b129527a6c6f89b409296b0a37326034, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

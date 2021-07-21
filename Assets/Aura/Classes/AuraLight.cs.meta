@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: f01d29d88278f45458d99e6b5199e920
+timeCreated: 1513526440
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - shadowMapRenderTexture: {instanceID: 0}
+  - cookieMapRenderTexture: {instanceID: 0}
+  - storeShadowDataShader: {fileID: 4800000, guid: fff19db2423616b4dbabe995cd97279e,
+      type: 3}
+  - shadowDataRenderTexture: {instanceID: 0}
+  - storeDirectionalSpotLightCookieMapShader: {fileID: 4800000, guid: ffdac5434c39f7545b910c253007c8fc,
+      type: 3}
+  - storePointLightShadowMapShader: {fileID: 4800000, guid: f1531a9bd4087ff468de8de09f6ba126,
+      type: 3}
+  - storePointLightShadowMapMesh: {fileID: 4300000, guid: d68bec3f4c08e40468fad98606344ea6,
+      type: 3}
+  - storePointLightCookieMapShader: {fileID: 4800000, guid: 83815c326d7f2514884f3fc7a05b5aef,
+      type: 3}
+  executionOrder: 100
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

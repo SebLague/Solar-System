@@ -1,0 +1,84 @@
+﻿/***************************************************************************
+*                                                                          *
+*  Copyright (c) Raphaël Ernaelsten (@RaphErnaelsten)                      *
+*  All Rights Reserved.                                                    *
+*                                                                          *
+*  NOTICE: Although Aura (or Aura 1) is still a free project, it is not    *
+*          open-source nor in the public domain anymore.                   *
+*          Aura is now governed by the End Used License Agreement of       *
+*          the Asset Store of Unity Technologies.                          *
+*                                                                          * 
+*  All information contained herein is, and remains the property of        *
+*  Raphaël Ernaelsten.                                                     *
+*  The intellectual and technical concepts contained herein are            *
+*  proprietary to Raphaël Ernaelsten and are protected by copyright laws.  *
+*  Dissemination of this information or reproduction of this material      *
+*  is strictly forbidden.                                                  *
+*                                                                          *
+***************************************************************************/
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///                                                                                                                                                             ///
+///     Integration algorithm inspired from  																													///
+/// 	Sebastien Hillaire's publication : https://www.slideshare.net/DICEStudio/physically-based-and-unified-volumetric-rendering-in-frostbite/26              ///
+///                                                                                                                                                             ///
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include "../Includes/Common.cginc"
+#include "Includes/OcclusionCulling.cginc"
+
+Texture3D<half4> textureBuffer;
+RWTexture3D<half4> fogVolumeTexture;
+half normalizationCoefficient;
+
+void WriteInOutputTexture(uint3 pos, half4 colorAndDensity)
+{
+    fogVolumeTexture[pos] = colorAndDensity;
+}
+
+half4 Accumulate(half4 colorAndDensityFront, half4 colorAndDensityBack)
+{
+    half transmittance = exp(colorAndDensityBack.w * layerDepth);
+    half4 accumulatedLightAndTransmittance = half4(colorAndDensityFront.xyz + colorAndDensityBack.xyz * (1.0f - transmittance) * colorAndDensityFront.w, colorAndDensityFront.w * transmittance);
+	
+    return accumulatedLightAndTransmittance;
+}
+
+half4 SampleLightingTexture(uint3 id)
+{
+    half4 data = textureBuffer[id];
+    data.w *= normalizationCoefficient;
+
+    return data;
+}
+
+// Kernel 0
+#pragma kernel RayMarchThroughVolume 
+// Kernel 1
+#pragma kernel RayMarchThroughVolume ENABLE_OCCLUSION_CULLING
+
+[numthreads(NUM_THREAD_X,NUM_THREAD_Y,NUM_THREAD_Z)]
+void RayMarchThroughVolume(uint3 id : SV_DispatchThreadID)
+{
+    half3 normalizedLocalPos = GetNormalizedLocalPositionWithDepthBias(id);
+
+    #if ENABLE_OCCLUSION_CULLING
+    [branch]
+	if(IsNotOccluded(normalizedLocalPos.z, id.xy)) // TODO : MAYBE COULD BE OPTIMIZED BY USING A MASK VALUE IN THE DATA TEXTURE
+    #endif
+    {
+        half4 currentSliceValue = half4(0, 0, 0, 1);
+	    half4 nextValue = 0;  		
+		
+		[loop]
+		for(uint z = 0; z < id.z; ++z)
+		{
+			nextValue = SampleLightingTexture(uint3(id.xy, z));
+            currentSliceValue = Accumulate(currentSliceValue, nextValue);
+        }
+  		
+	    half4 valueAtCurrentZ = SampleLightingTexture(id);
+        currentSliceValue = Accumulate(currentSliceValue, valueAtCurrentZ);
+		WriteInOutputTexture(id, currentSliceValue);
+    }
+}
