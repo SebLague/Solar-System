@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour {
 
-    public string interactMessage = "Press F to interact";
+    public string interactMessage = "Press F (Y) to interact";
     protected bool playerInInteractionZone;
     public UnityEngine.Events.UnityEvent interactEvent;
+
+    bool selecting = false;
 
     protected virtual void Interact () {
         if (interactEvent != null) {
@@ -15,9 +17,16 @@ public class Interactable : MonoBehaviour {
     }
 
     protected virtual void Update () {
-        if (playerInInteractionZone && Input.GetKeyDown (KeyCode.F)) {
+        if (playerInInteractionZone && Input.GetAxis("Toggle") > 0) {
+            if (selecting) {
+                return;
+            }
+            selecting = true;
             GameUI.CancelInteractionDisplay ();
             Interact ();
+        }
+        else {
+            selecting = false;
         }
     }
 
