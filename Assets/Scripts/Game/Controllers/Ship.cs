@@ -60,16 +60,17 @@ public class Ship : GravityObject {
 	}
 
 	void HandleMovement () {
+		Debug.Log(Input.GetAxis("Select"));
 		// Thruster input
-		int thrustInputX = GetInputAxis (leftKey, rightKey);
-		int thrustInputY = GetInputAxis (descendKey, ascendKey);
-		int thrustInputZ = GetInputAxis (backwardKey, forwardKey);
+		float thrustInputX = Input.GetAxis("Horizontal");
+		float thrustInputY = Input.GetAxis("Throttle");
+		float thrustInputZ = Input.GetAxis("Vertical");
 		thrusterInput = new Vector3 (thrustInputX, thrustInputY, thrustInputZ);
 
 		// Rotation input
-		float yawInput = Input.GetAxisRaw ("Mouse X") * rotSpeed * inputSettings.mouseSensitivity / 100f;
-		float pitchInput = Input.GetAxisRaw ("Mouse Y") * rotSpeed * inputSettings.mouseSensitivity / 100f;
-		float rollInput = GetInputAxis (rollCounterKey, rollClockwiseKey) * rollSpeed * Time.deltaTime;
+		float yawInput = Input.GetAxisRaw ("Look X") * rotSpeed * inputSettings.mouseSensitivity / 100f;
+		float pitchInput = Input.GetAxisRaw ("Look Y") * rotSpeed * inputSettings.mouseSensitivity / 100f;
+		float rollInput = Input.GetAxis("Roll") * rollSpeed * Time.deltaTime;
 
 		// Calculate rotation
 		if (numCollisionTouches == 0) {
@@ -103,17 +104,6 @@ public class Ship : GravityObject {
 	void TeleportToBody (CelestialBody body) {
 		rb.velocity = body.velocity;
 		rb.MovePosition (body.transform.position + (transform.position - body.transform.position).normalized * body.radius * 2);
-	}
-
-	int GetInputAxis (KeyCode negativeAxis, KeyCode positiveAxis) {
-		int axis = 0;
-		if (Input.GetKey (positiveAxis)) {
-			axis++;
-		}
-		if (Input.GetKey (negativeAxis)) {
-			axis--;
-		}
-		return axis;
 	}
 
 	void HandleCheats () {

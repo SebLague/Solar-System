@@ -30,6 +30,7 @@ public class ShipHUD : MonoBehaviour {
 	LockOnUI lockOnUI;
 	Ship ship;
 	CelestialBody aimedBody;
+	bool selecting = false;
 
 	void Start () {
 		// Need to draw UI AFTER floating origin updates, otherwise may flicker when origin changes
@@ -65,13 +66,19 @@ public class ShipHUD : MonoBehaviour {
 
 			if (Time.timeScale != 0) {
 				aimedBody = FindAimedBody ();
-
-				if (Input.GetMouseButtonDown (0)) {
+				if (Input.GetAxis("Select") > 0 || Input.GetMouseButtonDown(0)) {
+					if (selecting) {
+						return;
+                    			}
+					selecting = true;
 					if (lockedBody == aimedBody) {
 						lockedBody = null;
 					} else {
 						lockedBody = aimedBody;
 					}
+				}
+				else {
+					selecting = false;
 				}
 			}
 
