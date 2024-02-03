@@ -77,17 +77,23 @@ public class PlayerController : GravityObject {
 	}
 
 	void Update () {
-		HandleMovement ();
-	}
+    }
 
-	void HandleMovement () {
+    void FixedUpdate()
+    {
+        HandleMovement();
+        HandleCelestialBodies();
+
+    }
+
+    void HandleMovement () {
 		HandleEditorInput ();
 		if (Time.timeScale == 0) {
 			return;
 		}
 		// Look input
-		yaw += Input.GetAxisRaw ("Mouse X") * inputSettings.mouseSensitivity / 10 * mouseSensitivityMultiplier;
-		pitch -= Input.GetAxisRaw ("Mouse Y") * inputSettings.mouseSensitivity / 10 * mouseSensitivityMultiplier;
+		yaw += Input.GetAxisRaw ("Look X") * inputSettings.mouseSensitivity / 10 * mouseSensitivityMultiplier;
+		pitch -= Input.GetAxisRaw ("Look Y") * inputSettings.mouseSensitivity / 10 * mouseSensitivityMultiplier;
 		pitch = Mathf.Clamp (pitch, pitchMinMax.x, pitchMinMax.y);
 		float mouseSmoothTime = Mathf.Lerp (0.01f, maxMouseSmoothTime, inputSettings.mouseSmoothing);
 		smoothPitch = Mathf.SmoothDampAngle (smoothPitch, pitch, ref pitchSmoothV, mouseSmoothTime);
@@ -101,13 +107,13 @@ public class PlayerController : GravityObject {
 		// Movement
 		bool isGrounded = IsGrounded ();
 		Vector3 input = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxisRaw ("Vertical"));
-		bool running = Input.GetKey (KeyCode.LeftShift);
+		bool running = Input.GetAxis("Throttle") < 0;
 		targetVelocity = transform.TransformDirection (input.normalized) * ((running) ? runSpeed : walkSpeed);
 		smoothVelocity = Vector3.SmoothDamp (smoothVelocity, targetVelocity, ref smoothVRef, (isGrounded) ? vSmoothTime : airSmoothTime);
 
 		//bool inWater = referenceBody
 		if (isGrounded) {
-			if (Input.GetKeyDown (KeyCode.Space)) {
+			if (Input.GetAxis("Throttle") > 0) {
 				rb.AddForce (transform.up * jumpForce, ForceMode.VelocityChange);
 				isGrounded = false;
 			} else {
@@ -116,12 +122,12 @@ public class PlayerController : GravityObject {
 			}
 		} else {
 			// Press (and hold) spacebar while above ground to engage jetpack
-			if (Input.GetKeyDown (KeyCode.Space)) {
+			if (Input.GetAxis("Throttle") > 0) {
 				usingJetpack = true;
 			}
 		}
 
-		if (usingJetpack && Input.GetKey (KeyCode.Space) && jetpackFuelPercent > 0) {
+		if (usingJetpack && Input.GetAxis("Throttle") > 0 && jetpackFuelPercent > 0) {
 			lastJetpackUseTime = Time.time;
 			jetpackFuelPercent -= Time.deltaTime / jetpackDuration;
 			rb.AddForce (transform.up * jetpackForce, ForceMode.Acceleration);
@@ -164,8 +170,9 @@ public class PlayerController : GravityObject {
 		return grounded;
 	}
 
-	void FixedUpdate () {
-		CelestialBody[] bodies = NBodySimulation.Bodies;
+    void HandleCelestialBodies()
+    {
+        CelestialBody[] bodies = NBodySimulation.Bodies;
 		Vector3 gravityOfNearestBody = Vector3.zero;
 		float nearestSurfaceDst = float.MaxValue;
 
